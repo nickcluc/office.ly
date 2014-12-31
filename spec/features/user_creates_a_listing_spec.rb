@@ -34,7 +34,9 @@ feature 'User creates a listing', %Q{
 
   end
 
-  scenario 'User Logs In & Creates A Listing' do
+
+  scenario 'User Logs In & Creates A Valid Listing' do
+
     listing = FactoryGirl.build(:listing)
 
 
@@ -55,7 +57,7 @@ feature 'User creates a listing', %Q{
     expect(page).to have_content "Listing Created Successfully!"
   end
 
-  scenario 'User Logs In & creats an invalid listing' do
+  scenario 'User Logs In & Creates an Invalid Listing' do
     visit new_listing_path
 
     click_button "Create Listing"

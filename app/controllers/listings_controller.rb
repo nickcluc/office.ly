@@ -1,7 +1,13 @@
 class ListingsController < ApplicationController
+  # before_filter :authenticate!, :except => [:index]
+
   def new
-    @current_user = current_user
+    @user = current_user
     @listing = Listing.new
+  end
+
+  def index
+    @listings = Listing.all
   end
 
   def create
@@ -21,13 +27,13 @@ class ListingsController < ApplicationController
 
   def listing_params
     params.require(:listing).permit(
-    :title,
-    :address,
-    :city,
-    :state,
-    :zip_code,
-    :rate_cents,
-    :created_by
+      :title,
+      :address,
+      :city,
+      :state,
+      :zip_code,
+      :rate_cents,
+      :created_by
     )
   end
 end
