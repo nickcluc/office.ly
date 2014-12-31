@@ -33,7 +33,7 @@ feature 'User creates a listing', %Q{
     click_button 'Log in'
   end
 
-  scenario 'User Logs In & Creates A Listing' do
+  scenario 'User Logs In & Creates A Valid Listing' do
 
     listing = FactoryGirl.build(:listing)
 
@@ -48,11 +48,19 @@ feature 'User creates a listing', %Q{
     fill_in 'Zip code', with: listing.zip_code
     fill_in 'Description', with: listing.description
     fill_in 'Weekly Rate - USD', with: listing.rate_cents
-    fill_in 'Created by', with: @current_user.id
 
     click_button "Create Listing"
 
     expect(page).to have_content "Listing Created Successfully!"
+  end
+
+  scenario 'User Logs In & Creates an Invalid Listing' do
+
+    visit new_listing_path
+
+    click_button "Create Listing"
+
+    expect(page).to have_content "Errors"
   end
 
 end

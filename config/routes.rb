@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :listings, only: [:new]
+  resources :listings, only: [:new, :index, :create, :show]
 end
