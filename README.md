@@ -1,5 +1,7 @@
 
-Status: [![Build Status](https://travis-ci.org/nickcluc/office.ly.svg?branch=master)](https://travis-ci.org/nickcluc/office.ly) 
+[![Build Status](https://travis-ci.org/nickcluc/office.ly.svg?branch=master)](https://travis-ci.org/nickcluc/office.ly)
+
+[![Coverage Status](https://coveralls.io/repos/nickcluc/office.ly/badge.png)](https://coveralls.io/r/nickcluc/office.ly)
 
 
 This README would normally document whatever steps are necessary to get the
