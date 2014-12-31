@@ -26,3 +26,5 @@ gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'devise'
 gem 'foundation-rails'
 gem 'gravtastic'
+
+gem 'coveralls', require: false
