@@ -1,5 +1,5 @@
 == README
-
+Status: [![Build Status](https://travis-ci.org/nickcluc/office.ly.svg?branch=master)](https://travis-ci.org/nickcluc/office.ly) 
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
