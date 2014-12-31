@@ -1,13 +1,13 @@
 <h1>Create New Listing</h1>
 
-<%= form_for(@listing) do |f| %>
+<%= form_for @listing do |f| %>
   <% if @listing.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
 
       <ul>
         <% @listing.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
@@ -42,18 +42,17 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
-  <%= byebug %>
 
   <div class="field">
-    <%= f.label :rate_cents, 'Weekly Rate - USD' %><br>
+    <%= f.label :rate_cents, "Weekly Rate - USD" %><br>
     <%= f.text_field :rate_cents %>
   </div>
 
-
-  <%= f.hidden_field :created_by, :value => @user.id %>
+  <%= f.hidden_field :created_by, value: current_user.id %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Listing" %>
+>>>>>>> master
   </div>
 
 <% end %>

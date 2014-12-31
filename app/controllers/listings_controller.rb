@@ -7,15 +7,15 @@ class ListingsController < ApplicationController
   end
 
   def index
-
+    @listings = Listing.all
   end
 
   def create
-    @listing = Listing.create(listing_params)
+    @listing = Listing.new(listing_params)
     if @listing.save
-      redirect_to listing_path(@listing), notice: 'Listing Created Successfully!'
+      redirect_to listing_path(@listing), notice: "Listing Created Successfully!"
     else
-      render "new"
+      render :new
     end
   end
 
@@ -27,14 +27,13 @@ class ListingsController < ApplicationController
 
   def listing_params
     params.require(:listing).permit(
-      :created_by,
-      :rate_cents,
-      :zip_code,
-      :state,
-      :city,
+      :title,
       :address,
-      :description,
-      :title
-      )
+      :city,
+      :state,
+      :zip_code,
+      :rate_cents,
+      :created_by
+    )
   end
 end
