@@ -58,6 +58,8 @@ feature 'User creates a listing', %Q{
   end
 
   scenario 'User Logs In & Creates an Invalid Listing' do
+
+
     visit new_listing_path
 
     click_button "Create Listing"
