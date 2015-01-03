@@ -48,7 +48,7 @@ feature 'User creates a listing', %Q{
     fill_in 'Address', with: listing.address
     fill_in 'City', with: listing.city
     fill_in 'State', with: listing.state
-    fill_in 'Zip code', with: listing.zip_code
+    fill_in 'Zip Code', with: listing.zip_code
     fill_in 'Description', with: listing.description
     fill_in 'Weekly Rate - USD', with: listing.rate_cents
 
@@ -63,7 +63,7 @@ feature 'User creates a listing', %Q{
 
     click_button "Create Listing"
 
-    expect(page).to have_content("error")
+    expect(page).to have_content("can't be blank")
   end
 
 end
