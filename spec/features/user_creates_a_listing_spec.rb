@@ -58,15 +58,12 @@ feature 'User creates a listing', %Q{
   end
 
   scenario 'User Logs In & Creates an Invalid Listing' do
+
     visit new_listing_path
 
     click_button "Create Listing"
 
-    expect(page).to have_content "Title can't be blank"
-    expect(page).to have_content "Address can't be blank"
-    expect(page).to have_content "City can't be blank"
-    expect(page).to have_content "State can't be blank"
-    expect(page).to have_content "Zip code can't be blank"
+    expect(page).to have_content("error")
   end
 
 end
