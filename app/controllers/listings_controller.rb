@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  # before_filter :authenticate!, :except => [:index]
+  before_action :authenticate_user!, :except => [:index]
 
   def new
     @user = current_user

@@ -39,7 +39,6 @@ feature 'User creates a listing', %Q{
 
     listing = FactoryGirl.build(:listing)
 
-
     visit new_listing_path
 
     expect(page).to have_content "Create New Listing"
