@@ -25,6 +25,6 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'gravtastic'
 gem 'simple_form'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 gem 'coveralls', require: false
