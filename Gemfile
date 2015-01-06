@@ -26,6 +26,6 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'gravtastic'
 gem 'simple_form'
-gem 'searchkick'
+
 
 gem 'coveralls', require: false
