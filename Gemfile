@@ -21,11 +21,10 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
 end
 
-
 gem 'devise'
 gem 'foundation-rails'
 gem 'gravtastic'
 gem 'simple_form'
-
+gem 'rails_12factor'
 
 gem 'coveralls', require: false
