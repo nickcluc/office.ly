@@ -12,6 +12,7 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
+    @listing.user_id = current_user.id
     if @listing.save
       redirect_to listing_path(@listing), notice: "Listing Created Successfully!"
     else
@@ -33,7 +34,7 @@ class ListingsController < ApplicationController
       :state,
       :zip_code,
       :rate_cents,
-      :created_by
+      :user_id
     )
   end
 end

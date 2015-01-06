@@ -15,5 +15,7 @@ FactoryGirl.define do
     state 'MA'
     zip_code '02111'
     rate_cents 100
+
+    user
   end
 end

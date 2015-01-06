@@ -12,7 +12,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'better_errors'
+  # gem 'better_errors'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
@@ -26,5 +26,6 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'gravtastic'
 gem 'simple_form'
+gem 'searchkick'
 
 gem 'coveralls', require: false

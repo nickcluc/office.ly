@@ -39,10 +39,6 @@ GEM
     addressable (2.3.6)
     arel (6.0.0)
     bcrypt (3.1.9)
-    better_errors (2.1.0)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
-      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -76,16 +72,27 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    elasticsearch (1.0.6)
+      elasticsearch-api (= 1.0.6)
+      elasticsearch-transport (= 1.0.6)
+    elasticsearch-api (1.0.6)
+      multi_json
+    elasticsearch-transport (1.0.6)
+      faraday
+      multi_json
     erubis (2.7.0)
     execjs (2.2.2)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     foundation-rails (5.5.0.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0, < 3.4)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
     gravtastic (3.2.6)
+    hashie (3.3.2)
     hike (1.2.3)
     i18n (0.7.0)
     jbuilder (2.2.6)
@@ -107,6 +114,7 @@ GEM
     mini_portile (0.6.1)
     minitest (5.5.0)
     multi_json (1.10.1)
+    multipart-post (2.0.0)
     netrc (0.10.2)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
@@ -174,6 +182,10 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
+    searchkick (0.8.5)
+      activemodel
+      elasticsearch (>= 1)
+      hashie
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
     simple_form (3.1.0)
@@ -221,7 +233,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  better_errors
   capybara
   coffee-rails (~> 4.1.0)
   coveralls
@@ -237,6 +248,7 @@ DEPENDENCIES
   rails (= 4.2.0)
   rspec-rails
   sass-rails (~> 5.0)
+  searchkick
   shoulda-matchers
   simple_form
   spring
