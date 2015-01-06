@@ -1,3 +1,8 @@
 class Listing < ActiveRecord::Base
-  validates :title, :address, :city, :state, :zip_code, :rate_cents, presence: true
+  searchkick
+  belongs_to :user
+
+  validates :title, :address, :city,
+            :state, :zip_code, :rate_cents, :user_id,
+            presence: true
 end

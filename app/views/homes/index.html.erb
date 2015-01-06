@@ -12,17 +12,31 @@
     </div>
   </div>
 
+<br>
 
 <div class="row">
-  <div class="large-4 columns">
-    <h4 class="text-center">Featured Listing</h4><br>
-    <img class ="centered" src="http://placehold.it/400x300&text=[img]">
-  </div>
+  <% unless @featured == nil %>
+    <div class="large-4 columns">
+      <h4 class="text-center">Featured Listing</h4><br>
+      <img class ="centered" src="http://placehold.it/400x300&text=[img]">
+      <h4><%= link_to @featured.title, listing_path(@featured) %></h4>
+      <p>
+        <%= @featured.address %>
+        <%= @featured.city %>, <%= @featured.state %>
+      </p>
+    </div>
+  <% end %>
 
+<% if @featured == nil %>
+  <div class="large-12 columns">
+<% else %>
   <div class="large-8 columns">
-    <h4>This is a content section.</h4>
+<% end %>
+    <h4 class="text-center">It's Your Business</h4>
+    <h6 class="text-center">Love where you build it</h6>
     <p>
-      Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.
+      Office.ly's mission is to connect entrepreneurs and small businesses with
+      the right work space for them.
     </p>
     <p>
       Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.
