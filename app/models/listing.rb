@@ -1,5 +1,5 @@
 class Listing < ActiveRecord::Base
-  searchkick
+
   belongs_to :user
 
   validates :title, :address, :city,

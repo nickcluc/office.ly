@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :authenticate_user!, :except => [:index]
+  before_action :authenticate_user!, :except => [:index, :show]
 
   def new
     @user = current_user
@@ -34,6 +34,7 @@ class ListingsController < ApplicationController
       :state,
       :zip_code,
       :rate_cents,
+      :description,
       :user_id
     )
   end
