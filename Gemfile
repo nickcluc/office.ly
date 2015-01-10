@@ -25,5 +25,12 @@ gem 'foundation-rails'
 gem 'gravtastic'
 gem 'simple_form'
 gem 'rails_12factor', group: :production
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
+gem 'geocoder'
 
-gem 'coveralls', require: false
+group :test do
+  gem 'email_spec'
+  gem 'coveralls', require: false
+end
