@@ -4,7 +4,6 @@
     <br>
     <h1 class="text-center page-title">Office.ly</h1>
     <h4 class="text-center page-subtitle">Find your space.</h4>
-    <br>
     <div class="text-center">
       <%= link_to 'List Your Space', new_listing_path %>
       <br>
@@ -16,22 +15,21 @@
 
 <div class="row">
   <% unless @featured == nil %>
-    <div class="large-4 columns">
+    <div class="large-4 medium-6 small-12 small-centered medium-centered large-uncentered columns border">
       <h4 class="text-center">Featured Listing</h4><br>
-      <img class ="centered" src="http://placehold.it/400x300&text=[img]">
-      <h4><%= link_to @featured.title, listing_path(@featured) %></h4>
-      <p>
-        <%= @featured.address %>
-        <%= @featured.city %>, <%= @featured.state %>
+      <%= image_tag(@featured.header_image, size:"300", class: "featured-image") unless @featured.header_image == nil %>
+      <h4 class="text-center"><%= link_to @featured.title, listing_path(@featured) %></h4>
+      <p class="text-center">
+        <%= @featured.address %><br>
+        <%= @featured.city %>, <%= @featured.state %> <%= @featured.zip_code %><br>
+        <%= @featured.description unless @featured.description == nil %>
       </p>
     </div>
   <% end %>
 
-<% if @featured == nil %>
-  <div class="large-12 columns">
-<% else %>
-  <div class="large-8 columns">
-<% end %>
+
+
+  <div class="large-8 small-12 columns">
     <h4 class="text-center">It's Your Business</h4>
     <h6 class="text-center">Love where you build it</h6>
     <p>

@@ -24,6 +24,8 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
   end
 
+
+
   private
 
   def listing_params
@@ -35,7 +37,8 @@ class ListingsController < ApplicationController
       :zip_code,
       :rate_cents,
       :description,
-      :user_id
+      :user_id,
+      :header_image
     )
   end
 end

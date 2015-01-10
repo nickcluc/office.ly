@@ -1,6 +1,11 @@
 <div class="col-md-8 col-md-offset-2">
   <div class="row">
     <div class="panel panel-default">
+      <div class= "row">
+        <div class="large-6 centered columns">
+           <%= image_tag(@listing.header_image, alt: "Image for #{@listing.title}") %>
+        </div>
+      </div>
       <ul class="pricing-table">
         <li class="title" style="font-size:2em"><%= @listing.title %></li>
         <li class="price">$<%= @listing.rate_cents %>/week</li>

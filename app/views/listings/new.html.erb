@@ -5,17 +5,7 @@
         <h1>Create New Listing</h1>
       </div>
 
-        <%= simple_form_for @listing do |f| %>
-          <%= f.input :title %>
-          <%= f.input :address %>
-          <%= f.input :city %>
-          <%= f.input :state %>
-          <%= f.input :zip_code, label: 'Zip Code' %>
-          <%= f.input :description %>
-          <%= f.input :rate_cents, label: 'Weekly Rate - USD' %>
-          <p>* Indicates necessary fields.</p>
-          <%= f.button :submit, class:'radius' %>
-        <% end %>
+        <%= render "form" %>
 
     </div>
   </div>

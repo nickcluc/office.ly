@@ -1,18 +1,34 @@
-<div class="col-md-8 col-md-offset-2">
+<h1 class="text-center">All Available Listings</h1>
+<div class="large-6 columns">
   <div class="row">
-    <div class="panel panel-default">
+    <div id="listings-container">
       <div class="panel-heading">
-        <h1>All Available Listings</h1>
       </div>
-      <ul>
+      <ul class="no-bullet">
         <% @listings.each do |listing| %>
-          <li>
-            <%= link_to listing.title, listing_path(listing) %><br>
-            <%= listing.address %><br>
-            <%= listing.city %>
-          </li>
+          <div class="row">
+            <li>
+              <div class="left listing-text">
+                <%= link_to listing.title, listing_path(listing) %><br>
+                <%= listing.address %><br>
+                <%= listing.city %> <%= listing.zip_code %>
+              </div>
+              <% if listing.header_image %>
+                <div class="right listing-image">
+                  <%= image_tag(listing.header_image, size: "150") unless listing.header_image == nil %>
+                </div>
+              <% end %>
+            </li>
+          </div>
+          <br>
         <% end %>
       </ul>
+    </div>
+  </div>
+</div>
+<div class="large-6 columns">
+  <div id="map-container">
+    <div id="map-canvas">
     </div>
   </div>
 </div>
