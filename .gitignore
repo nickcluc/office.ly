@@ -13,5 +13,4 @@
 /tmp
 /public/uploads
 /coverage
-/.env
 .env

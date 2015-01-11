@@ -8,6 +8,7 @@ class ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
+    @addresses = Listing.addresses
   end
 
   def create

@@ -6,6 +6,7 @@ class Listing < ActiveRecord::Base
   validates :title, :address, :city,
             :state, :zip_code, :rate_cents, :user_id,
             presence: true
+
   def self.addresses
     addresses = []
     listings = self.all
