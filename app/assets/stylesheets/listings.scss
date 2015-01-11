@@ -19,16 +19,18 @@
   margin-top: 20px;
   margin-left: 40px;
 }
-// #map-container {
-//   height: 80vh;
-//   border-radius: 16px 16px;
-//   border-color: #fff;
-//   border-style: solid;
-//   box-shadow: 2px 2px 10px #B1B1B1;
-//   margin-top: 25px;
-//   border-width: 7px;
-// }
+#map-container {
+  height: 80vh;
+  border-radius: 16px 16px;
+  border-color: #fff;
+  border-style: solid;
+  box-shadow: 2px 2px 10px #B1B1B1;
+  margin-top: 25px;
+  border-width: 1px;
+}
 #map-canvas {
   height: 80vh;
   width: 100%;
+  paddng: 0;
+  margin: 0;
 }
