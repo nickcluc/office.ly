@@ -3,10 +3,10 @@
 class ListingPhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  if Rails.env.production? || Rails.env.development?
-    storage :fog
-  else
+  if Rails.env.test? || Rails.env.development?
     storage :file
+  else
+    storage :fog
   end
 
   def store_dir

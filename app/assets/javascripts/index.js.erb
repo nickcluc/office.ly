@@ -2,11 +2,14 @@ function initialize() {
   var map;
   var elevator;
   var mapOptions = {
-    zoom: 15,
+    zoom: 14,
     center: { lat: 42.3581, lng: -71.0636},
     disableDefaultUI: true
   };
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var bounds = new google.maps.LatLngBounds();
+
   var addresses = <%= Listing.addresses %>;
   for (var x = 0; x < addresses.length; x++) {
     $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
@@ -16,9 +19,11 @@ function initialize() {
         position: latlng,
         map: map
       });
-
+      bounds.extend(latlng)
     });
   }
+  map.fitBounds(bounds);
+  map.setCenter(bounds.getCenter());
 };
 
 
