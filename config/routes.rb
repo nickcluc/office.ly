@@ -5,12 +5,12 @@ Rails.application.routes.draw do
 
 
   resources :listings, only: [
-      :new,
-      :index,
-      :create,
-      :show,
-      :edit,
-      :update,
-      :destroy
+    :new,
+    :index,
+    :create,
+    :show,
+    :edit,
+    :update,
+    :destroy
   ]
 end
