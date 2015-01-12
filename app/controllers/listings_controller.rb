@@ -23,6 +23,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @header_image_url = @listing.header_image.to_s
   end
 
   def edit
