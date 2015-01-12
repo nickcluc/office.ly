@@ -18,4 +18,9 @@ FactoryGirl.define do
 
     user
   end
+
+  factory :review do
+    rating 5
+    comment "I really liked this office, the coffee machine really is sweet!"
+  end
 end

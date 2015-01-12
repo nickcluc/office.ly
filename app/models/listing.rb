@@ -2,6 +2,7 @@ class Listing < ActiveRecord::Base
   mount_uploader :header_image, ListingPhotoUploader
 
   belongs_to :user
+  has_many :reviews, dependent: :destroy
 
   validates :title, :address, :city,
             :state, :zip_code, :rate_cents, :user_id,

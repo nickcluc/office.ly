@@ -1,8 +1,8 @@
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-4 col-md-offset-2">
   <div class="row">
     <div class="panel panel-default">
       <div class= "row">
-        <div class="large-6 centered columns">
+        <div class="large-12 centered columns">
            <%= image_tag(@listing.header_image, alt: "Image for #{@listing.title}") %>
         </div>
       </div>
@@ -15,7 +15,7 @@
           <%= @listing.zip_code %>
         </li>
         <li class="description"><%= @listing.description %></li>
-        <li class="cta-button"><a class="button radius"href="#">Available Soon</a></li>
+        <li class="cta-button"><a class="button radius"href="#">Available Soon</a> <%= button_to "Leave a Review", new_listing_review_path(@listing), method: "get", class: "button radius" unless current_user == @listing.user %></li>
       </ul>
       <div class="row">
         <% if current_user == @listing.user %>
@@ -24,5 +24,13 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <div id="reviews" class="row">
+    <% @listing.reviews.each do |review| %>
+      <h4>Rating: <%= review.rating %></h4>
+      <p>
+        Review: <%= review.comment %>
+      </p>
+    <% end %>
   </div>
 </div>
