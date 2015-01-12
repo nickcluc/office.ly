@@ -8,16 +8,17 @@
   <script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOmo37fkORiOIHJHCfZUFKZvKSxFWtf58">
   </script>
+  <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 </head>
 <body>
 
   <nav class="top-bar">
+    <ul class="left">
+      <li><a href="/"><%= image_tag "https://s3.amazonaws.com/officely-production/logo-white.png", size:"45" %></li>
+    </ul>
 
 
     <section class="top-bar-section">
-      <ul class="left title-area">
-        <li class="name"><a href="/"><%= image_tag "https://s3.amazonaws.com/officely-production/logo-white.png", size:"45" %> Office.ly</a></li>
-      </ul>
       <ul class="right">
         <%- if current_user -%>
           <li><%= link_to 'View All Listings', listings_path %></li>
@@ -43,5 +44,6 @@
   <%= javascript_include_tag 'application' %>
 
   <%= yield :extra_footer %>
+
 </body>
 </html>
