@@ -4,5 +4,13 @@ Rails.application.routes.draw do
   devise_for :users
 
 
-  resources :listings, only: [:new, :index, :create, :show]
+  resources :listings, only: [
+    :new,
+    :index,
+    :create,
+    :show,
+    :edit,
+    :update,
+    :destroy
+  ]
 end
