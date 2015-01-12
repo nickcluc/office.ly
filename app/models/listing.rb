@@ -8,7 +8,7 @@ class Listing < ActiveRecord::Base
             presence: true
 
   geocoded_by :full_street_address
-  after_validation :geocode
+  after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
   def full_street_address
     [address, city, state, zip_code].compact.join(', ')
