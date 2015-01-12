@@ -12,13 +12,12 @@
 <body>
 
   <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">Office.ly</a></h1>
-      </li>
-    </ul>
+
 
     <section class="top-bar-section">
+      <ul class="left title-area">
+        <li><a href="/"><%= image_tag("logo-white.png", size:"44") %>  Office.ly</a></li>
+      </ul>
       <ul class="right">
         <%- if current_user -%>
           <li><%= link_to 'View All Listings', listings_path %></li>
