@@ -13,4 +13,7 @@ Rails.application.routes.draw do
     :update,
     :destroy
   ]
+  resources :listings, only: [:show] do
+    resources :reviews, only: [:new, :create, :index]
+  end
 end
