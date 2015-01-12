@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
 
-  resources :listings,
-    only: [
+  resources :listings, only: [
       :new,
       :index,
       :create,
@@ -13,5 +12,5 @@ Rails.application.routes.draw do
       :edit,
       :update,
       :destroy
-    ]
+  ]
 end
