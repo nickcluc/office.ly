@@ -1,12 +1,16 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
   end
 
   def new
     @listing = Listing.find(params[:listing_id])
     @review = Review.new
+    if @listing.user == current_user
+      redirect_to listing_path(@listing),
+      notice: "You can't review a listing you created!"
+    end
   end
 
   def create
