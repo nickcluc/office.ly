@@ -7,11 +7,18 @@ class Listing < ActiveRecord::Base
             :state, :zip_code, :rate_cents, :user_id,
             presence: true
 
+  geocoded_by :full_street_address
+  after_validation :geocode
+
+  def full_street_address
+    [address, city, state, zip_code].compact.join(', ')
+  end
+
   def self.addresses
     addresses = []
     listings = self.all
     listings.each do |listing|
-      addresses << "#{listing.address} #{listing.city}, #{listing.state} #{listing.zip_code}"
+      addresses << [listing.latitude, listing.longitude]
     end
     addresses
   end
