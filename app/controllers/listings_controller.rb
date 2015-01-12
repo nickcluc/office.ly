@@ -25,7 +25,24 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
   end
 
+  def edit
+    @listing = Listing.find(params[:id])
+  end
 
+  def update
+    @listing = Listing.find(params[:id])
+    if @listing.update_attributes(listing_params)
+      redirect_to listing_path(@listing), notice: "Listing Updated Successfully"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @listing = Listing.find(params[:id])
+    @listing.destroy
+    redirect_to listings_path, notice: "Listing Deleted Successfully"
+  end
 
   private
 

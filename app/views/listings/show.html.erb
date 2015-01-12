@@ -17,6 +17,12 @@
         <li class="description"><%= @listing.description %></li>
         <li class="cta-button"><a class="button radius"href="#">Available Soon</a></li>
       </ul>
+      <div class="row">
+        <% if current_user == @listing.user %>
+            <%= button_to "Edit Listing", edit_listing_path, method: "get", class: "button radius left"  %>
+            <%= button_to "Delete Listing", listing_path(@listing), method: "delete", class: "button radius right"  %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
