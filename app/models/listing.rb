@@ -15,12 +15,15 @@ class Listing < ActiveRecord::Base
     [address, city, state, zip_code].compact.join(', ')
   end
 
-  def self.addresses
-    addresses = []
-    listings = self.all
-    listings.each do |listing|
-      addresses << [listing.latitude, listing.longitude]
+  def self.locations(listings)
+    locations = []
+    if listings.class == self
+      locations << [listings.latitude, listings.longitude]
+    else
+      listings.each do |listing|
+        locations << [listing.latitude, listing.longitude]
+      end
     end
-    addresses
+    locations
   end
 end

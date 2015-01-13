@@ -4,12 +4,13 @@ function initialize() {
   var mapOptions = {
     zoom: 14,
     center: { lat: 42.3581, lng: -71.0636},
-    disableDefaultUI: true
+    disableDefaultUI: false
   };
 
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
   var bounds = new google.maps.LatLngBounds();
+  var pointCount = 0;
   for (var x = 0; x < addresses.length; x++) {
     var p = addresses[x]
     var latlng = new google.maps.LatLng(p[0], p[1]);
@@ -17,9 +18,16 @@ function initialize() {
       position: latlng,
       map: map
     });
+    pointCount++;
     bounds.extend(latlng);
   }
-  map.fitBounds(bounds);
+  if (pointCount > 1) {
+    map.fitBounds(bounds);
+  }
+  else if (pointCount == 1) {
+    map.setCenter(bounds.getCenter());
+    map.setZoom(13);
+  }
 };
 
 

@@ -7,8 +7,17 @@ class ListingsController < ApplicationController
   end
 
   def index
-    @listings = Listing.all
-    @locations = Listing.addresses
+    radius = params[:radius] ||= 30
+    if params[:query]
+      @listings = Listing.near(params[:query], radius )
+        if @listings.empty?
+          @listings = Listing.all
+        end
+      @locations = Listing.locations(@listings)
+    else
+      @listings = Listing.all
+      @locations = Listing.locations(@listings)
+    end
   end
 
   def create
@@ -24,6 +33,7 @@ class ListingsController < ApplicationController
   def show
     @listing = Listing.find(params[:id])
     @header_image_url = @listing.header_image.to_s
+    @location = Listing.locations(@listing)
   end
 
   def edit
