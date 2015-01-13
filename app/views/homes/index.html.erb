@@ -6,15 +6,18 @@
     <h4 class="text-center page-subtitle">Work Better, Together</h4>
     <br>
     <%= form_tag listings_path, method: :get do %>
-      <div class="row collapse">
-        <div class="small-8 columns">
+      <div class="row collapse ">
+        <div class="small-offset-2 small-5 columns">
           <%= text_field_tag :query, nil, placeholder: "Where do You Want To Work?" %>
         </div>
         <div class="small-2 columns">
           <%= select_tag :radius, options_for_select([ ["Radius", 30], [ "1 mi.", 1 ], [ "5 mi.", 5 ], [ "10 mi.", 10 ], [ "20 mi.", 20 ], ["50 mi.", 50] ]) %>
         </div>
-        <div class="small-2 columns">
+        <div class="small-1 columns">
           <%= submit_tag "Search", { class: "button alert radius postfix" } %>
+        </div>
+        <div class="small-1 columns">
+
         </div>
       </div>
     <% end %>
