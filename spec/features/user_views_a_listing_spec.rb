@@ -19,6 +19,6 @@ feature "User views a listing's page", %{
     expect(page).to have_content listing.address
     expect(page).to have_content listing.city
     expect(page).to have_content listing.state
-    expect(page).to have_content listing.rate_cents
+    expect(page).to have_content listing.weekly_rate
   end
 end

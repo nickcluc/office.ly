@@ -30,6 +30,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 gem 'geocoder'
+gem 'jquery-ui-rails'
 
 group :test do
   gem 'email_spec'

@@ -18,7 +18,7 @@ feature "User deletes a listing they create", %{
 
     visit listing_path(test_listing)
 
-    click_button "Delete Listing"
+    click_link "Delete Listing"
 
     expect(page).to have_content "Listing Deleted Successfully"
   end

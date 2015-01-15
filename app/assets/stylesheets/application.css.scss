@@ -13,5 +13,15 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
+ *= require jquery-ui
 
  */
+ .alert-box {
+   z-index: 100;
+   width: 50%;
+   height: 50px;
+   text-align: center;
+   margin: auto;
+   position: absolute;
+   top: 0; left: 0; bottom: 10; right: 0;
+ }

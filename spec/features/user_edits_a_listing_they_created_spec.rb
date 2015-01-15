@@ -26,7 +26,7 @@ feature "User edits a listing they own", %{
 
     expect(page).to have_content test_listing.title
 
-    click_button "Edit Listing"
+    click_link "Edit Listing"
 
     fill_in "Title", with: "Edited Listing"
 
@@ -42,13 +42,13 @@ feature "User edits a listing they own", %{
     fill_in "Email", with: test_listing.user.email
     fill_in "Password", with: test_listing.user.password
 
-    click_button "Log in"
+    click_on "Log in"
 
     visit listing_path(test_listing)
 
     expect(page).to have_content test_listing.title
 
-    click_button "Edit Listing"
+    click_on "Edit Listing"
 
     fill_in "Title", with: ""
 
