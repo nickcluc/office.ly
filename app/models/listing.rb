@@ -3,9 +3,10 @@ class Listing < ActiveRecord::Base
 
   belongs_to :user
   has_many :reviews, dependent: :destroy
+  has_many :reservations
 
   validates :title, :address, :city,
-            :state, :zip_code, :rate_cents, :user_id,
+            :state, :zip_code, :weekly_rate, :user_id,
             presence: true
 
   geocoded_by :full_street_address
@@ -13,6 +14,10 @@ class Listing < ActiveRecord::Base
 
   def full_street_address
     [address, city, state, zip_code].compact.join(', ')
+  end
+
+  def full_address
+    [address, city, state, zip_code].compact.join(' ')
   end
 
   def self.locations(listings)
@@ -26,4 +31,5 @@ class Listing < ActiveRecord::Base
     end
     locations
   end
+
 end

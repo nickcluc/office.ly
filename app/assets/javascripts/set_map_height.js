@@ -1,4 +1,5 @@
 $(document).ready(function(){
   var height = ($( ".info-left" ).height());
-  $( ".info-right" ).height(height);
+  var priceHeight = ($("#price").height())
+  $(".info-right" ).height(height-priceHeight);
 });

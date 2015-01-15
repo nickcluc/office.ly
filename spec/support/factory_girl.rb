@@ -14,7 +14,7 @@ FactoryGirl.define do
     city 'Boston'
     state 'MA'
     zip_code '02111'
-    rate_cents 100
+    weekly_rate 100
 
     user
   end
@@ -22,5 +22,10 @@ FactoryGirl.define do
   factory :review do
     rating 5
     comment "I really liked this office, the coffee machine really is sweet!"
+  end
+
+  factory :reservation do
+    start_date "05/03/2015"
+    end_date "12/03/2015"
   end
 end

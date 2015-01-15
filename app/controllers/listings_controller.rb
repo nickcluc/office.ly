@@ -24,7 +24,8 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
     if @listing.save
-      redirect_to listing_path(@listing), notice: "Listing Created Successfully!"
+      flash[:notice] = "Listing Created Successfully!"
+      redirect_to listing_path(@listing)
     else
       render :new
     end
@@ -34,6 +35,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @header_image_url = @listing.header_image.to_s
     @location = Listing.locations(@listing)
+    @reservation = Reservation.new
   end
 
   def edit
@@ -43,7 +45,8 @@ class ListingsController < ApplicationController
   def update
     @listing = Listing.find(params[:id])
     if @listing.update_attributes(listing_params)
-      redirect_to listing_path(@listing), notice: "Listing Updated Successfully"
+      flash[:notice] = "Listing Updated Successfully"
+      redirect_to listing_path(@listing)
     else
       render :edit
     end
@@ -52,7 +55,8 @@ class ListingsController < ApplicationController
   def destroy
     @listing = Listing.find(params[:id])
     @listing.destroy
-    redirect_to listings_path, notice: "Listing Deleted Successfully"
+    flash[:notice] = "Listing Deleted Successfully"
+    redirect_to listings_path
   end
 
   private
@@ -64,7 +68,7 @@ class ListingsController < ApplicationController
       :city,
       :state,
       :zip_code,
-      :rate_cents,
+      :weekly_rate,
       :description,
       :user_id,
       :header_image

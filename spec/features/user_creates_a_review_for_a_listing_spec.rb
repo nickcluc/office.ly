@@ -24,12 +24,12 @@ feature "User posts a review", %{
     sign_in_as(other_user)
     visit listing_path(test_listing)
 
-    click_button "Leave a Review"
+    click_link "Leave a Review"
 
     select test_review.rating, from: "Overall Rating"
     fill_in "Review", with: test_review.comment
 
-    click_button "Leave Review"
+    click_on "Leave Review"
 
     expect(page).to have_content "Rating: #{test_review.rating}"
     expect(page).to have_content test_review.comment
@@ -44,7 +44,7 @@ feature "User posts a review", %{
 
   scenario "unauthenticated user tries to post a review" do
     visit listing_path(test_listing)
-    click_button "Leave a Review"
+    click_on "Leave a Review"
 
     expect(page).to have_content "You need to sign in or sign up before continuing."
   end

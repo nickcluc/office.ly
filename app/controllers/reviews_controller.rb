@@ -18,8 +18,8 @@ class ReviewsController < ApplicationController
     @review.listing = Listing.find(params[:listing_id])
     @review.user = current_user
     if @review.save
-      redirect_to listing_path(@review.listing),
-      notice: "Review Posted Successfully!"
+      redirect_to listing_path(@review.listing)
+      flash[:notice] = "Review Posted Successfully!"
     end
   end
 

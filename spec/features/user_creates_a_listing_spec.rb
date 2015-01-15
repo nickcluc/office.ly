@@ -44,7 +44,7 @@ feature 'User creates a listing', %Q{
     fill_in 'State', with: listing.state
     fill_in 'Zip Code', with: listing.zip_code
     fill_in 'Description', with: listing.description
-    fill_in 'Weekly Rate - USD', with: listing.rate_cents
+    fill_in 'Weekly Rate - USD', with: listing.weekly_rate
 
     click_button "Create Listing"
 
