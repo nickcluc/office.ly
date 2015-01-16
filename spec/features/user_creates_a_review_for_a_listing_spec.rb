@@ -48,4 +48,15 @@ feature "User posts a review", %{
 
     expect(page).to have_content "You need to sign in or sign up before continuing."
   end
+  scenario "User tries to review a site they created (back door)" do
+    visit listing_path(test_listing)
+    click_on "Leave a Review"
+
+    fill_in "Email", with: test_listing.user.email
+    fill_in "Password", with: test_listing.user.password
+
+    click_on "Log in"
+
+    expect(page).to have_content "You can't review a listing you created!"
+  end
 end
