@@ -2,8 +2,8 @@
   <div class="header-image" style="background-image: url(<%= @listing.header_image.to_s %>);">
     <% if current_user == @listing.user %>
       <div>
-        <%= link_to "Edit Listing", edit_listing_path, class: "button radius left", style:"background-color: rgba(60,63,64,0.8);"  %>
-        <%= link_to "Delete Listing", listing_path(@listing), method: "delete", class: "button radius left", style:"background-color: rgba(60,63,64,0.8);"  %>
+        <%= link_to "Edit Listing", edit_listing_path(@listing), class: "button left", style:"background-color: rgba(60,63,64,0.8);"  %>
+        <%= link_to "Delete Listing", listing_path(@listing), method: "delete", class: "button left", style:"background-color: rgba(60,63,64,0.8);"  %>
       </div>
     <% end %>
   </div>
@@ -22,12 +22,12 @@
         <% unless @listing.description == "" %>
           <li class="description"><%= @listing.description %></li>
         <% end %>
-        <li class="cta-button">
-          <div class="button expand radius" id="reservation">
-            Reserve This Space
-          </div>
-          <%= link_to "Leave a Review", new_listing_review_path(@listing), class: "button radius" unless current_user == @listing.user %></li>
-        <div class="reservation-form"><%= render "reservations/form" %></div>
+        <% unless current_user == @listing.user %>
+          <li class="cta-button">
+            <%= render "reservations/form" %>
+            <%= link_to "Leave a Review", new_listing_review_path(@listing), class: "button radius" %>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div class="small-8 medium-8 large-8 columns">

@@ -14,6 +14,11 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
     if @reservation.save
       redirect_to reservation_path(@reservation)
+    else
+      @listing = @reservation.listing
+      @location = Listing.locations(@listing)
+      @errors = @reservation.errors
+      render "listings/show"
     end
   end
 

@@ -1,4 +1,14 @@
 <%= form_for [@listing, @reservation] do |f| %>
+<div class="row">
+    <% if @errors %>
+      <h5 class="error">The following error(s) prevented this reservation from being saved:</h5>
+      <ul>
+        <% @errors.full_messages.each do |msg| %>
+          <li class="error"><%= msg %></li><br>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
   <div class="row">
       <div class="small-12 columns">
         <%= f.label :start_date, "Start Date" %>
