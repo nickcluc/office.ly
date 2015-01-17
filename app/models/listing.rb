@@ -4,6 +4,7 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   has_many :reviews, dependent: :destroy
   has_many :reservations
+  belongs_to :listing_type
 
   validates :title, :address, :city,
             :state, :zip_code, :weekly_rate, :user_id,

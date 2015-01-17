@@ -47,6 +47,13 @@
       <!-- Top Bar Right Nav Elements -->
       <ul class="right">
         <!-- Divider -->
+        <li>
+          <% flash.each do |type, value| %>
+          <div data-alert class="flash <%= type %> alert-box">
+            <p><%= value %></p>
+          </div>
+          <% end %>
+        </li>
         <li class="divider"></li>
 
         <!-- Anchor -->
@@ -68,11 +75,6 @@
 
 
 
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
-    </div>
-  <%- end -%>
 
   <%= yield %>
 

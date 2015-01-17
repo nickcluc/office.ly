@@ -19,6 +19,7 @@
           <%= @listing.city %>, <%= @listing.state %>
           <%= @listing.zip_code %>
         </li>
+        <li class="description"><b><%= @listing.listing_type.title %></b><br><%= @listing.listing_type.description %></li>
         <% unless @listing.description == "" %>
           <li class="description"><%= @listing.description %></li>
         <% end %>

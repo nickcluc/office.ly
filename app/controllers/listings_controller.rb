@@ -71,7 +71,8 @@ class ListingsController < ApplicationController
       :weekly_rate,
       :description,
       :user_id,
-      :header_image
+      :header_image,
+      :listing_type_id
     )
   end
 end
