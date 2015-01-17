@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+listing_type_list = [
+  [ "Single Desk", "Single Desk In Office" ],
+  [ "Private Office", "Private office room" ],
+  [ "Cubicle", "Desk in a cubicle" ],
+  [ "Open Office", "This office is an open space and has room to accomodate more people" ]
+]
+
+listing_type_list.each do |title, description|
+  ListingType.create( title: title, description: description )
+end

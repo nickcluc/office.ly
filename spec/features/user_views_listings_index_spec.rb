@@ -18,7 +18,6 @@ feature "User views all the listings", %{
   scenario "user views the index of listings" do
     visit listings_path
 
-    expect(page).to have_content "All Available Listings"
     expect(page).to have_content @listing.title
     expect(page).to have_content @listing.address
     expect(page).to have_content @listing.city

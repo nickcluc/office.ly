@@ -9,6 +9,7 @@ class ListingsController < ApplicationController
   def index
     radius = params[:radius] ||= 30
     if params[:query]
+      @query = params[:query]
       @listings = Listing.near(params[:query], radius )
         if @listings.empty?
           @listings = Listing.all
@@ -71,7 +72,8 @@ class ListingsController < ApplicationController
       :weekly_rate,
       :description,
       :user_id,
-      :header_image
+      :header_image,
+      :listing_type_id
     )
   end
 end
