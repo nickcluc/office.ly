@@ -16,6 +16,7 @@ FactoryGirl.define do
     zip_code '02111'
     weekly_rate 100
 
+    listing_type
     user
   end
 

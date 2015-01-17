@@ -6,9 +6,15 @@ class Listing < ActiveRecord::Base
   has_many :reservations
   belongs_to :listing_type
 
-  validates :title, :address, :city,
-            :state, :zip_code, :weekly_rate, :user_id,
-            presence: true
+  validates :title,
+    :address,
+    :city,
+    :state,
+    :zip_code,
+    :weekly_rate,
+    :user_id,
+    :listing_type_id,
+    presence: true
 
   geocoded_by :full_street_address
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }

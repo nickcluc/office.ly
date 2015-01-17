@@ -17,8 +17,6 @@ feature "User creates a listing", %Q{
   before :each do
     user = FactoryGirl.create(:user)
 
-    @type = FactoryGirl.create(:listing_type)
-
     visit new_user_registration_path
 
     fill_in "Email", with: user.email
@@ -46,7 +44,7 @@ feature "User creates a listing", %Q{
     fill_in "Zip Code", with: listing.zip_code
     fill_in "Description", with: listing.description
     fill_in "Weekly Rate - USD", with: listing.weekly_rate
-    select @type.title, from: "Listing Type"
+    select listing.listing_type.title, from: "Listing Type"
 
     click_button "Create Listing"
 
