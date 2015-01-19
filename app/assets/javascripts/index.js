@@ -1,9 +1,17 @@
+var mapCenter;
+
+  geocoder = new google.maps.Geocoder();
+
+  geocoder.geocode({'address': searchCity}, function(results, status){
+    mapCenter = results[0].geometry.location;
+  });
 function initialize() {
   var map;
   var elevator;
+
   var mapOptions = {
     zoom: 14,
-    center: { lat: 42.3581, lng: -71.0636},
+    center: mapCenter,
     disableDefaultUI: false
   };
 
@@ -31,4 +39,12 @@ function initialize() {
 };
 
 
-google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(
+  window,
+  'load',
+  function () {
+    //1000 milliseconds == 1 second,
+    //play with this til find a happy minimum delay amount
+    window.setTimeout(initialize, 500);
+  }
+);
