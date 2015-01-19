@@ -1,6 +1,7 @@
 class HomesController < ApplicationController
   def index
     @featured = Listing.all.sample
-    @current_location = request.location
+    @current_location = request.location.city
+    binding.pry
   end
 end
