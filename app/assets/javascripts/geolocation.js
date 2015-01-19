@@ -20,10 +20,13 @@ function success(pos){
   // get longitude and latitude from the position object passed in
   var lng = pos.coords.longitude;
   var lat = pos.coords.latitude;
-
-  var cookie_val = lat + ", " + lng
-  document.cookie = "lat_lng=" + escape(cookie_val);
-}
+  var latlng = new google.maps.LatLng(lat, lng);
+  geocoder = new google.maps.Geocoder();
+  geocoder.geocode({'latLng': latlng}, function(results, status){
+    var cookie_val = results[1].formatted_address;
+    document.cookie = "lat_lng=" + escape(cookie_val);
+  });
+};
 
 // upon error, do this
 function error(err){
