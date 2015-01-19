@@ -12,7 +12,7 @@ class ListingsController < ApplicationController
       @query = params[:query]
       @listings = Listing.near(params[:query], radius )
         if @listings.empty?
-          @listings = Listing.all
+          @listings = []
         end
       @locations = Listing.locations(@listings)
     else
