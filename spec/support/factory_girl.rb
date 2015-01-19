@@ -16,6 +16,7 @@ FactoryGirl.define do
     zip_code '02111'
     weekly_rate 100
 
+    listing_type
     user
   end
 
@@ -27,5 +28,10 @@ FactoryGirl.define do
   factory :reservation do
     start_date "05/03/2015"
     end_date "12/03/2015"
+  end
+
+  factory :listing_type do
+    title "Single Desk"
+    description "Single Desk Available"
   end
 end
