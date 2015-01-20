@@ -16,6 +16,7 @@ feature "User creates a listing", %Q{
 
   before :each do
     user = FactoryGirl.create(:user)
+    FactoryGirl.create(:amenity)
 
     visit new_user_registration_path
 
@@ -44,11 +45,14 @@ feature "User creates a listing", %Q{
     fill_in "Zip Code", with: listing.zip_code
     fill_in "Description", with: listing.description
     fill_in "Weekly Rate - USD", with: listing.weekly_rate
+    check "Coffee"
+
     select listing.listing_type.title, from: "Listing Type"
 
     click_button "Create Listing"
 
     expect(page).to have_content "Listing Created Successfully!"
+    expect(page).to have_content "Coffee"
   end
 
   scenario "User Logs In & Creates an Invalid Listing" do

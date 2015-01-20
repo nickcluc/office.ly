@@ -34,4 +34,10 @@ FactoryGirl.define do
     title "Single Desk"
     description "Single Desk Available"
   end
+
+  factory :amenity do
+    name "Coffee"
+    description "sfhjdsg"
+    font_awesome_image "shfjs"
+  end
 end

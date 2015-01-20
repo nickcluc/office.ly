@@ -1,13 +1,30 @@
-<%= simple_form_for @listing do |f| %>
-  <%= f.input :title %>
-  <%= f.input :address %>
-  <%= f.input :city %>
-  <%= f.input :state %>
-  <%= f.input :zip_code, label: 'Zip Code' %>
-  <%= f.input :description %>
-  <%= f.input :weekly_rate, label: 'Weekly Rate - USD' %>
-  <%= f.input :header_image, type: :file, label: 'Listing Image' %>
-  <%= f.association :listing_type, label: 'Listing Type' %>
-  <p>* Indicates necessary fields.</p>
-  <%= f.button :submit, class:'radius' %>
+<%= simple_form_for @listing, html: { id: "wizard" } do |f| %>
+  <div>
+    <h3>General Info</h3>
+    <section>
+      <div>
+        <%= f.input :title %>
+        <%= f.input :address %>
+        <%= f.input :city %>
+        <%= f.input :state %>
+        <%= f.input :zip_code, label: 'Zip Code' %>
+        <%= f.input :description %>
+        <%= f.input :weekly_rate, label: 'Weekly Rate - USD' %>
+        <%= f.input :header_image, type: :file, label: 'Listing Image' %>
+        <%= f.association :listing_type, label: 'Listing Type' %>
+        <p>* Indicates necessary fields.</p>
+
+      </div>
+    </section>
+    <h3>Amenities</h3>
+    <section>
+      <ul>
+        <%= f.association :amenities, as: :check_boxes, include_blank: false %>
+      </ul>
+    </section>
+    <section>
+      <%= f.button :submit, class:'radius' %>
+    </section>
+
+  </div>
 <% end %>

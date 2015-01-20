@@ -28,6 +28,18 @@
             <%= link_to "Leave a Review", new_listing_review_path(@listing), class: "button radius" %>
           </li>
         <% end %>
+        <li>
+          <ul>
+            <h5 class="text-center"><b>Amenities</b></h5>
+            <% @listing.amenities.each do |amenity| %>
+              <li class="description">
+                <b><%= amenity.name %></b><br>
+                <i class="<%= amenity.font_awesome_image %>"></i>
+                <%= amenity.description %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
       </ul>
     </div>
     <div class="small-4-centered medium-8 large-8 columns">

@@ -1,5 +1,7 @@
 var mapCenter;
-
+  if (! searchCity){
+    var searchCity = "";
+  }
   geocoder = new google.maps.Geocoder();
 
   geocoder.geocode({'address': searchCity}, function(results, status){
