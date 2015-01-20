@@ -14,9 +14,8 @@ listing_type_list = [
 ]
 
 listing_type_list.each do |title, description|
-  unless ListingType.find_by(title: title)
-    ListingType.create( title: title, description: description )
-  end
+  ltype = ListingType.find_or_initialize_by( title: title, description: description )
+  ltype.save
 end
 
 amenities_list = [
