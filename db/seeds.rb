@@ -14,5 +14,21 @@ listing_type_list = [
 ]
 
 listing_type_list.each do |title, description|
-  ListingType.create( title: title, description: description )
+  ltype = ListingType.find_or_initialize_by( title: title, description: description )
+  ltype.save
+end
+
+amenities_list = [
+  ["Pet Friendly", "We allow pets! (Check for restrictions)", "fa fa-paw"],
+  ["Coffee", "Coffee Machine Available!", "fa fa-coffee"],
+  ["WiFi", "Wireless Throughout the Office", "fa fa-wifi"],
+  ["Beer!", "Beer in the Office!!", "fa fa-beer"],
+  ["Snacks", "Snacks Available", "fa fa-cutlery"],
+  ["Conference rooms", "Conference Rooms Available", "fa fa-slideshare"]
+
+]
+
+amenities_list.each do |title, description, logo|
+  amen = Amenity.find_or_initialize_by( name: title, description: description, font_awesome_image: logo )
+  amen.save
 end

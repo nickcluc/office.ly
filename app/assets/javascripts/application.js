@@ -14,6 +14,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require foundation
+//= require jquery.steps.min
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

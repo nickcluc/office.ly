@@ -23,8 +23,14 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
+    @amenities = params[:listing][:amenity_ids]
     @listing.user_id = current_user.id
     if @listing.save
+      @amenities.each do |amenity_id|
+        unless amenity_id == ""
+          ListingAmenity.create(listing_id: @listing.id, amenity_id: amenity_id)
+        end
+      end
       flash[:notice] = "Listing Created Successfully!"
       redirect_to listing_path(@listing)
     else
@@ -45,7 +51,14 @@ class ListingsController < ApplicationController
 
   def update
     @listing = Listing.find(params[:id])
+    @amenities = params[:listing][:amenity_ids]
     if @listing.update_attributes(listing_params)
+      @amenities.each do |amenity_id|
+        unless amenity_id == ""
+          amenity = ListingAmenity.find_or_initialize_by(listing_id: @listing.id, amenity_id: amenity_id)
+          amenity.save
+        end
+      end
       flash[:notice] = "Listing Updated Successfully"
       redirect_to listing_path(@listing)
     else
@@ -64,6 +77,7 @@ class ListingsController < ApplicationController
 
   def listing_params
     params.require(:listing).permit(
+      :amenity_ids,
       :title,
       :address,
       :city,
