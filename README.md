@@ -1,7 +1,17 @@
+#  Office.ly
 
-ER Diagram:
+#####  Officely is an Airbnb clone for office spaces. It allows companies to list any open desks or cubicles they have available for short or long-term rental.
+
+In my last job, we had a huge office, but about **one quarter** of it went unused. I wanted to build a solution to help both the host office and small businesses connect to fill that empty space.
+
+
+##### ER Diagram:
 
 ![alt tag](er_diagram.png)
+
+
+
+##### Status:
 
 [![Build Status](https://travis-ci.org/nickcluc/office.ly.svg?branch=master)](https://travis-ci.org/nickcluc/office.ly)
 
