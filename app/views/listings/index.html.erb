@@ -16,7 +16,9 @@
     <ul class="no-bullet">
       <% @listings.each do |listing| %>
         <div class="row">
+
           <li class="listing">
+            <hr/>
             <div class="left listing-text">
               <%= link_to listing.title, listing_path(listing) %><br>
               <%= listing.address %><br>
