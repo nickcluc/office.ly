@@ -47,6 +47,6 @@ google.maps.event.addDomListener(
   function () {
     //1000 milliseconds == 1 second,
     //play with this til find a happy minimum delay amount
-    window.setTimeout(initialize, 500);
+    window.setTimeout(initialize, 0);
   }
 );

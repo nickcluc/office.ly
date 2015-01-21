@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120181207) do
+ActiveRecord::Schema.define(version: 20150121144856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20150120181207) do
     t.integer  "weekly_rate"
     t.integer  "listing_type_id", null: false
   end
+
+  add_index "listings", ["latitude", "longitude"], name: "index_listings_on_latitude_and_longitude", using: :btree
 
   create_table "reservations", force: :cascade do |t|
     t.date    "start_date",             null: false
