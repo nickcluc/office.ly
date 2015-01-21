@@ -19,6 +19,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
   gem 'dotenv-rails'
+  gem 'rack-mini-profiler'
 end
 
 gem 'devise'
