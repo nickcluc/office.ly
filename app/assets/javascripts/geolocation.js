@@ -9,7 +9,7 @@ var options = {
   // timeout = how long does the device have, in milliseconds to return a result?
   timeout: 5000,
   // maximumAge = maximum age for a possible previously-cached position. 0 = must return the current position, not a prior cached position
-  maximumAge: 0
+  maximumAge: 600000
 };
 
 // call getCurrentPosition()
