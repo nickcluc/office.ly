@@ -12,7 +12,6 @@ In my last job, we had a huge office, but about **one quarter** of it went unuse
 ##### Screenshots:
 
 ![alt tag](home.png)
-![alt tag](index.png)
 
 ##### Status:
 
