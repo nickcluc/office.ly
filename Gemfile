@@ -32,6 +32,7 @@ gem 'fog'
 gem 'mini_magick'
 gem 'geocoder'
 gem 'jquery-ui-rails'
+gem 'kaminari'
 
 group :test do
   gem 'email_spec'

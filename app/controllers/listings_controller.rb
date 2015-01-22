@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
   end
 
   def index
-    radius = params[:radius] ||= 30
+    radius = params[:radius] ||= 5
     if params[:query]
       @query = params[:query]
       @listings = Listing.near(params[:query], radius )
