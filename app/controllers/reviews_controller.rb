@@ -22,7 +22,6 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Review Posted Successfully!"
     else
       @listing = Listing.find(params[:listing_id])
-      binding.pry
       render "new"
     end
   end
