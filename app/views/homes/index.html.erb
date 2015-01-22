@@ -28,7 +28,7 @@
       <p class="text-center">
         <%= @featured.address %><br>
         <%= @featured.city %>, <%= @featured.state %> <%= @featured.zip_code %><br>
-        <%= @featured.description unless @featured.description == nil %>
+        <%= @featured.description  %>
       </p>
     </div>
   <% end %>
@@ -44,3 +44,40 @@
     </p>
   </div>
 </div>
+
+
+<script type="text/javascript" charset="utf-8">
+  var options = {
+    enableHighAccuracy: false,
+    timeout: 5000,
+    maximumAge: 600000
+  };
+
+  function success(pos){
+    var lng = pos.coords.longitude;
+    var lat = pos.coords.latitude;
+    var latlng = new google.maps.LatLng(lat, lng);
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode({'latLng': latlng}, function(results, status){
+      var cookie_val = results[1].formatted_address;
+      document.cookie = "lat_lng=" + escape(cookie_val);
+    });
+  };
+
+  function error(err) {
+    console.warn('ERROR(' + err.code + '): ' + err.message);
+  };
+
+  navigator.geolocation.getCurrentPosition(success, error, options);
+
+//   taco = {
+//     win: 'yay',
+//     fail: 'boo',
+//     end: function(){ console.log(this); console.log(this.win); },
+//     contents: {
+//       meat: 'beef'
+//     }
+//   }
+//
+// alert(taco.end())
+</script>
