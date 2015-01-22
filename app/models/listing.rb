@@ -42,6 +42,8 @@ class Listing < ActiveRecord::Base
   end
 
   def has_reserved?(user)
-    reservations.pluck(:user_id).include?(user.id)
+    if user
+      reservations.pluck(:user_id).include?(user.id)
+    end
   end
 end

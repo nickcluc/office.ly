@@ -23,11 +23,16 @@ FactoryGirl.define do
   factory :review do
     rating 5
     comment "I really liked this office, the coffee machine really is sweet!"
+
+    reservation
   end
 
   factory :reservation do
     start_date "05/03/2015"
     end_date "12/03/2015"
+
+    listing
+    user
   end
 
   factory :listing_type do
