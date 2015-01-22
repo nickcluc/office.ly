@@ -19,20 +19,23 @@ feature "User posts a review", %{
     FactoryGirl.create(:user)
   end
 
+  let (:test_reservation) do
+    FactoryGirl.create(:reservation)
+  end
+
   scenario "User successfully posts a review" do
-    test_review  = FactoryGirl.build(:review)
-    sign_in_as(other_user)
-    visit listing_path(test_listing)
+    sign_in_as(test_reservation.user)
+    visit listing_path(test_reservation.listing)
 
     click_link "Leave a Review"
 
-    select test_review.rating, from: "Overall Rating"
-    fill_in "Review", with: test_review.comment
+    select "5", from: "Overall Rating"
+    fill_in "Review", with: "What an unbelievable place !!!!!! Great office space!!!!!!!"
 
     click_on "Leave Review"
 
-    expect(page).to have_content "Rating: #{test_review.rating}"
-    expect(page).to have_content test_review.comment
+    expect(page).to have_content "Rating: 5"
+    expect(page).to have_content "What an unbelievable place !!!!!! Great office space!!!!!!!"
   end
 
   scenario "User tries to review a site they created" do
@@ -44,19 +47,7 @@ feature "User posts a review", %{
 
   scenario "unauthenticated user tries to post a review" do
     visit listing_path(test_listing)
-    click_on "Leave a Review"
 
-    expect(page).to have_content "You need to sign in or sign up before continuing."
-  end
-  scenario "User tries to review a site they created (back door)" do
-    visit listing_path(test_listing)
-    click_on "Leave a Review"
-
-    fill_in "Email", with: test_listing.user.email
-    fill_in "Password", with: test_listing.user.password
-
-    click_on "Log in"
-
-    expect(page).to have_content "You can't review a listing you created!"
+    expect(page).to_not have_button "Leave a Review"
   end
 end
