@@ -1,0 +1,35 @@
+<% if @listings == [] %>
+<h1 class="text-center">No Listings available</h1>
+<h4 class="text-center">for <%= @query %></h4>
+<h4 class="text-center">Please try another search!</h4>
+
+<% else %>
+<h1 class="text-center">Listings for <%= @query %></h1>
+<% end %>
+<div class="row">
+  <ul class="no-bullet">
+    <% @listings.each do |listing| %>
+    <div class="row">
+
+      <li class="listing">
+        <hr/>
+        <div class="left listing-text">
+          <%= link_to listing.title, listing_path(listing) %><br>
+          <%= listing.address %><br>
+          <%= listing.city %> <%= listing.zip_code %><br>
+          Rate from: $<%= listing.weekly_rate %>/week
+        </div>
+        <% if listing.header_image %>
+        <div class="right listing-image">
+          <%= image_tag(listing.header_image, size: "150") unless listing.header_image == nil %><br>
+          <% listing.amenities.pluck(:font_awesome_image).each do |amenity_logo| %>
+            <i class="<%= amenity_logo %>"></i>
+          <% end %>
+        </div>
+        <% end %>
+      </li>
+    </div>
+    <br>
+    <% end %>
+  </ul>
+</div>

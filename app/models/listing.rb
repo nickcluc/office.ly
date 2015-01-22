@@ -41,4 +41,8 @@ class Listing < ActiveRecord::Base
     locations
   end
 
+  def has_reserved?(user)
+    self.reservations.pluck(:user_id).include?(user.id)
+  end
+
 end

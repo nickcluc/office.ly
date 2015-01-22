@@ -1,0 +1,14 @@
+<% if @listing.amenities.any? %>
+  <ul class="pricing-table" id="amenities">
+    <li class="text-center title"><b>Amenities</b></li>
+    <ul style="list-style-type: none; text-align: center;">
+      <% @listing.amenities.each do |amenity| %>
+      <li class="description amenity" style="display: inline-block; border:none; text-align: center;">
+        <b><%= amenity.name %></b><br>
+        <i class="<%= amenity.font_awesome_image %>"></i><br>
+        <%= amenity.description %>
+      </li>
+      <% end %>
+    </ul>
+  </ul>
+<% end %>
