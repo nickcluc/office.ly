@@ -53,6 +53,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @amenities = params[:listing][:amenity_ids]
     if @listing.update_attributes(listing_params)
+      @listing.amenities.clear
       @amenities.each do |amenity_id|
         unless amenity_id == ""
           amenity = ListingAmenity.find_or_initialize_by(listing_id: @listing.id, amenity_id: amenity_id)
