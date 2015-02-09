@@ -21,7 +21,12 @@ FactoryGirl.define do
   end
 
   factory :review do
-    rating 5
+    overall_rating 5
+    cleanliness_rating 5
+    location_rating 5
+    company_rating 5
+    amenities_rating 4
+
     comment "I really liked this office, the coffee machine really is sweet!"
   end
 

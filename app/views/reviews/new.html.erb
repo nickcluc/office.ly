@@ -6,7 +6,11 @@
         <h1 class="text-center">Leave a Review for <%= @listing.title %></h1>
       </div>
       <%= simple_form_for [@listing, @review] do |f| %>
-        <%= f.input :rating, label: "Overall Rating", collection: (1..5).sort.reverse, default: 1  %>
+        <%= f.input :overall_rating, label: "Overall Rating", collection: (1..5).sort.reverse, default: 1  %>
+        <%= f.input :company_rating, label: "Company Rating", collection: (1..5).sort.reverse, default: 1  %>
+        <%= f.input :location_rating, label: "Location Rating", collection: (1..5).sort.reverse, default: 1  %>
+        <%= f.input :amenities_rating, label: "Amenities Rating", collection: (1..5).sort.reverse, default: 1  %>
+        <%= f.input :cleanliness_rating, label: "Cleanliness Rating", collection: (1..5).sort.reverse, default: 1  %>
         <%= f.input :comment, label: "Review" %>
         <%= f.submit "Leave Review", class: "button radius" %>
       <% end %>

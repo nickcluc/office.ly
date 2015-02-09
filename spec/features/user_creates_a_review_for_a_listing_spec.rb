@@ -7,7 +7,7 @@ feature "User posts a review", %{
   [ ] I must be signed in to post a review
   [ ] I cannot review the site if I own it
   [ ] I must rate and can optionally comment on it
-  [ ] If it is successfully saved, I see a notification ont he listing page telling me so
+  [ ] If it is successfully saved, I see a notification on the listing page telling me so
   [ ] If it is not saved, I see a notification telling me so
 } do
 
@@ -26,12 +26,20 @@ feature "User posts a review", %{
 
     click_link "Leave a Review"
 
-    select test_review.rating, from: "Overall Rating"
+    select test_review.overall_rating, from: "Overall Rating"
+    select test_review.amenities_rating, from: "Amenities Rating"
+    select test_review.cleanliness_rating, from: "Cleanliness Rating"
+    select test_review.location_rating, from: "Location Rating"
+    select test_review.company_rating, from: "Company Rating"
     fill_in "Review", with: test_review.comment
 
     click_on "Leave Review"
 
-    expect(page).to have_content "Rating: #{test_review.rating}"
+    expect(page).to have_content "Rating: #{test_review.overall_rating}"
+    expect(page).to have_content "Amenities Rating: #{test_review.amenities_rating}"
+    expect(page).to have_content "Cleanliness Rating: #{test_review.cleanliness_rating}"
+    expect(page).to have_content "Location Rating: #{test_review.location_rating}"
+    expect(page).to have_content "Company Rating: #{test_review.company_rating}"
     expect(page).to have_content test_review.comment
   end
 
