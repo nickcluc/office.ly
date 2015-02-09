@@ -13,7 +13,10 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
- *= require jquery-ui
+ *= require jquery-ui/draggable
+ *= require jquery-ui/resizable
+ *= require jquery-ui/selectable
+ *= require jquery-ui/sortable
 
  */
  .alert-box {

@@ -5,7 +5,7 @@
   <%= form_tag listings_path, method: :get do %>
     <div class="row collapse ">
       <div class="small-offset-1 small-5 large-offset-3 large-4 columns">
-        <%= text_field_tag :query, nil, placeholder: "Where do You Want To Work?" %>
+        <%= text_field_tag :query, nil, placeholder: "Where do You Want To Work?", value: @current_location %>
       </div>
       <div class="small-3 large-1 columns">
         <%= select_tag :radius, options_for_select([ ["Radius", 30], [ "1 mi.", 1 ], [ "5 mi.", 5 ], [ "10 mi.", 10 ], [ "20 mi.", 20 ], ["50 mi.", 50] ]) %>
@@ -28,7 +28,7 @@
       <p class="text-center">
         <%= @featured.address %><br>
         <%= @featured.city %>, <%= @featured.state %> <%= @featured.zip_code %><br>
-        <%= @featured.description unless @featured.description == nil %>
+        <%= @featured.description  %>
       </p>
     </div>
   <% end %>
@@ -46,22 +46,38 @@
 </div>
 
 
+<script type="text/javascript" charset="utf-8">
+  var options = {
+    enableHighAccuracy: false,
+    timeout: 5000,
+    maximumAge: 600000
+  };
 
-<footer class="row">
-  <div class="large-12 columns">
-    <hr/>
-    <div class="row">
-      <div class="large-6 columns">
-        <p>© Copyright NCDev.</p>
-      </div>
-      <div class="large-6 columns">
-        <ul class="inline-list right">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Site Map</a></li>
-          <li><a href="#">Mission</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
+  function success(pos){
+    var lng = pos.coords.longitude;
+    var lat = pos.coords.latitude;
+    var latlng = new google.maps.LatLng(lat, lng);
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode({'latLng': latlng}, function(results, status){
+      var cookie_val = results[1].formatted_address;
+      document.cookie = "lat_lng=" + escape(cookie_val);
+    });
+  };
+
+  function error(err) {
+    console.warn('ERROR(' + err.code + '): ' + err.message);
+  };
+
+  navigator.geolocation.getCurrentPosition(success, error, options);
+
+//   taco = {
+//     win: 'yay',
+//     fail: 'boo',
+//     end: function(){ console.log(this); console.log(this.win); },
+//     contents: {
+//       meat: 'beef'
+//     }
+//   }
+//
+// alert(taco.end())
+</script>

@@ -20,6 +20,9 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to listing_path(@review.listing)
       flash[:notice] = "Review Posted Successfully!"
+    else
+      @listing = Listing.find(params[:listing_id])
+      render "new"
     end
   end
 

@@ -8,56 +8,24 @@
     <% end %>
   </div>
 </div>
-  <div class="row collapse">
-    <div class="small-12 medium-4 large-4 columns">
-      <ul class="pricing-table info-left" style="">
-        <li id="price" style="font-size:1.7em"><span class="left" style="padding-left:30px;">$<%= @listing.weekly_rate %></span><span class="right" style="padding-right:30px;">per week</span></li>
-        <li class="title" style="font-size:2em"><%= @listing.title %></li>
-        <li class="bullet-item">
-          <%= @listing.address %><br>
-          <%= @listing.city %>, <%= @listing.state %>
-          <%= @listing.zip_code %>
-        </li>
-        <li class="description"><b><%= @listing.listing_type.title %></b><br><%= @listing.listing_type.description %></li>
-        <% unless @listing.description == "" %>
-          <li class="description"><%= @listing.description %></li>
-        <% end %>
-        <% unless current_user == @listing.user %>
-          <li class="cta-button">
-            <%= render "reservations/form" %>
-            <%= link_to "Leave a Review", new_listing_review_path(@listing), class: "button radius" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="small-4-centered medium-8 large-8 columns">
-      <div id="map-canvas" class="info-right" style="height: 300px; border: solid 1px #dddddd;"></div>
-    </div>
+<div class="row collapse">
+  <div class="small-12 medium-4 large-4 columns">
+    <%= render "listings/info_table" %>
   </div>
-    <h4 class="text-center">Reviews for <%= @listing.title %></h4>
-    <% @listing.reviews.each do |review| %>
-      <div class="row">
-        <div class="large-2 columns">
-          <%= image_tag review.user.gravatar_url %><br>
-          <%= review.user.email %>
-        </div>
-        <div class="large-4 columns">
-          <h4 class="">Overall Rating: <%= review.overall_rating %></h4>
-          <br>
-          <p>
-            Location Rating: <%= review.try(:location_rating) %><br>
-            Company Rating: <%= review.try(:company_rating) %><br>
-            Cleanliness Rating: <%= review.try(:cleanliness_rating) %><br>
-            Amenities Rating: <%= review.try(:amenities_rating) %><br>
-          </p>
-          <p>
-            Review: <%= review.comment %>
-          </p>
-        </div>
-      </div>
-    <% end %>
+  <div class="small-4-centered medium-8 large-8 columns">
+    <div id="map-canvas" class="info-right" style="height: 300px; border: solid 1px #dddddd;"></div>
+  </div>
+</div>
+<div class="row collapse">
+  <div class="small-12 columns">
+    <%= render "listings/amenities" %>
+  </div>
+</div>
+<div class="row">
+  <%= render "listings/reviews" %>
+</div>
 
-
-    <script type="text/javascript" charset="utf-8">
-      var addresses = <%= @location %>;
-    </script>
+<script type="text/javascript" charset="utf-8">
+  var addresses = <%= @location %>;
+  var searchCity = "<%= @listing.full_address %>";
+</script>

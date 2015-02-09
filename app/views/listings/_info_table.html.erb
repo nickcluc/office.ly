@@ -1,0 +1,29 @@
+
+  <ul class="pricing-table info-left" style="">
+    <li id="price" style="font-size:1.7em">
+      <span class="left" style="padding-left:30px;">
+        $<%= @listing.weekly_rate %>
+      </span>
+      <span class="right" style="padding-right:30px;">
+        per week
+      </span>
+    </li>
+    <li class="title" style="font-size:2em"><%= @listing.title %></li>
+    <li class="bullet-item">
+      <%= @listing.address %><br>
+      <%= @listing.city %>, <%= @listing.state %>
+      <%= @listing.zip_code %>
+    </li>
+    <li class="description"><b><%= @listing.listing_type.title %></b><br><%= @listing.listing_type.description %></li>
+    <% unless @listing.description == "" %>
+    <li class="description"><%= @listing.description %></li>
+    <% end %>
+    <% unless current_user == @listing.user %>
+    <li class="cta-button">
+      <%= render "reservations/form" %>
+      <% if @listing.has_reserved?(current_user) %>
+      <%= link_to "Leave a Review", new_listing_review_path(@listing), class: "button radius" %>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>

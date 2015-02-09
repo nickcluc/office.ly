@@ -4,6 +4,8 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   has_many :reviews, dependent: :destroy
   has_many :reservations
+  has_many :listing_amenities
+  has_many :amenities, through: :listing_amenities
   belongs_to :listing_type
 
   validates :title,
@@ -39,4 +41,9 @@ class Listing < ActiveRecord::Base
     locations
   end
 
+  def has_reserved?(user)
+    if user
+      reservations.pluck(:user_id).include?(user.id)
+    end
+  end
 end
