@@ -28,8 +28,6 @@ FactoryGirl.define do
     amenities_rating 4
 
     comment "I really liked this office, the coffee machine really is sweet!"
-
-    reservation
   end
 
   factory :reservation do

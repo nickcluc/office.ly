@@ -24,6 +24,8 @@ feature "User posts a review", %{
   end
 
   scenario "User successfully posts a review" do
+    test_review = FactoryGirl.build(:review)
+    
     sign_in_as(test_reservation.user)
     visit listing_path(test_reservation.listing)
 
