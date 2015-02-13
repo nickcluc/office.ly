@@ -22,7 +22,7 @@ function initialize() {
   var bounds = new google.maps.LatLngBounds();
   var pointCount = 0;
   for (var x = 0; x < addresses.length; x++) {
-    var p = addresses[x]
+    var p = addresses[x];
     var latlng = new google.maps.LatLng(p[0], p[1]);
     new google.maps.Marker({
       position: latlng,

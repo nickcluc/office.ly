@@ -9,6 +9,7 @@
   <script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?key=#{env[GOOGLE_MAPS_API_KEY]}">
   </script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 </head>
 <body>
   <nav class="top-bar" data-topbar="" role="navigation" id="nav-bar">
@@ -37,7 +38,7 @@
                 <%= form_tag listings_path, method: :get do %>
                   <div class="row collapse">
                     <div class="small-8 columns">
-                      <%= text_field_tag :query, nil, placeholder: "Search Locations" %>
+                      <%= text_field_tag :query, nil, placeholder: "Search Locations",  id: "searchbox" %>
                     </div>
                     <div class="small-4 columns">
                       <%= submit_tag "Search", { class: "button alert expand" } %>
