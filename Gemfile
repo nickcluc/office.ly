@@ -33,6 +33,7 @@ gem 'mini_magick'
 gem 'geocoder'
 gem 'jquery-ui-rails'
 gem 'kaminari'
+gem 'goldiloader'
 
 group :test do
   gem 'email_spec'
