@@ -6,8 +6,6 @@
   <%= csrf_meta_tags %>
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oswald">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"></link>
-   <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_API_KEY']%>&callback=initMap"
-  type="text/javascript"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 </head>
 <body>
@@ -99,7 +97,8 @@
     </div>
   </div>
 </footer>
-
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_API_KEY']%>&callback=initMap"
+  type="text/javascript"></script>
   <%= javascript_include_tag 'application' %>
 
   <%= yield :extra_footer %>
